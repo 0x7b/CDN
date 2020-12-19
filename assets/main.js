@@ -50,16 +50,16 @@ $(document).ready(function () {
 	 * 改用 JsonBird：https://bird.ioliu.cn/
 	 * 
 	 */
-	var url = 'https://bird.ioliu.cn/v1/?url=https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8';
+	var url = 'https://bird.ioliu.cn/v1/?url=https://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=8';
 	var imgUrls = JSON.parse(sessionStorage.getItem("imgUrls"));
 	var index = sessionStorage.getItem("index");
 	var $panel = $('#panel');
 	if(imgUrls == null){
 		imgUrls = new Array();
-		index = 1;		
+		index = 0;		
 		$.get(url,function (result) {
 			images = result.images;
-			for (let i = 1; i < images.length; i++) {
+			for (let i = 0; i < images.length; i++) {
 				const item = images[i];
 				imgUrls.push(item.url);
 			}
@@ -72,7 +72,7 @@ $(document).ready(function () {
 			});
 	}else{
 		if(index == 7)
-			index = 1;
+			index = 0;
 		else
 			index++;
 		var imgUrl = imgUrls[index];
